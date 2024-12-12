@@ -3,6 +3,20 @@ import json
 import random
 import time
 
+def load_questions():
+    with open("questions.json", "r") as f:
+        questions = json.load(f)["questions"]
+
+    return questions
+
+def get_randome_questions(questions, num_question):
+    if num_question > len(questions):
+        num_question = len(questions)
+    
+    random_questions = random.sample(questions, num_question)
+
+    return random_questions
+
 def show_progress_bar(current, total, bar_length=20):
     percent = current / total
     filled_length = int(bar_length * percent)
@@ -10,24 +24,24 @@ def show_progress_bar(current, total, bar_length=20):
     print(f'\rProgress: |{bar}| {current}/{total} questions', end='')
     print()
 
-with open("questions.json", "r") as f:
-    questions = json.load(f)["questions"]
+questions = load_questions()
+random_questions = get_randome_questions(questions, 10)
+start_time = time.time()
+score = 0
 
 print("Welcome to the Python Quiz! ")
 print("Test your knowledge by answering ten Python questions.")
 print("Time start now...")
-start_time = time.time()
-random_questions = random.sample(questions, 10)
 
-score = 0
 for i, q in enumerate(random_questions):
     print()
     question = q["question"]
     choices = q["choice"]
     answer = q["answer"]
+    
+    random.shuffle(choices)
 
     print(f"Q{i+1}: {question}")
-    random.shuffle(choices)
     for j, choice in enumerate(choices):
         print(f"{j + 1}. {choice}")
     
@@ -48,6 +62,7 @@ for i, q in enumerate(random_questions):
         score += 1
     else:
         print("Incorrect!")
+        print(f"Correct answer: {answer}")
     
     show_progress_bar(i+1, len(random_questions))
 
