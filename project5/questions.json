@@ -1,0 +1,54 @@
+{
+    "questions":[
+        {
+            "question": "Which of the following is a method, not a function, in Python?",
+            "choice": ["len()", "print()", "list.append()", "max()"],
+            "answer": "list.append()"
+          },
+          {
+            "question": "Which keyword is used to define a function in Python?",
+            "choice": ["function", "def", "func", "define"],
+            "answer": "def"
+          },
+          {
+            "question": "What is the first argument of a method in a Python class?",
+            "choice": ["self", "this", "object", "cls"],
+            "answer": "self"
+          },
+          {
+            "question": "Which of the following can be used to add an element to the beginning of a list?",
+            "choice": ["list.insert(0, value)", "list.append(value)", "list.add(value)", "list.extend([value])"],
+            "answer": "list.insert(0, value)"
+          },
+          {
+            "question": "What will be the output of: print(type([]))?",
+            "choice": ["<class 'list'>", "<class 'tuple'>", "<class 'dict'>", "<class 'set'>"],
+            "answer": "<class 'list'>"
+          },
+          {
+            "question": "Which of the following can be used to define a method inside a class?",
+            "choice": ["def", "class", "method", "func"],
+            "answer": "def"
+          },
+          {
+            "question": "Which of the following methods can be used to remove the last element from a list?",
+            "choice": ["list.pop()", "list.remove()", "list.delete()", "list.clear()"],
+            "answer": "list.pop()"
+          },
+          {
+            "question": "Which method converts a string to lowercase?",
+            "choice": ["str.lower()", "str.upper()", "str.title()", "str.capitalize()"],
+            "answer": "str.lower()"
+          },
+          {
+            "question": "Which of the following is a valid method to check if a key exists in a dictionary?",
+            "choice": ["key in dict", "dict.hasKey(key)", "dict.contains(key)", "key.exists(dict)"],
+            "answer": "key in dict"
+          },
+          {
+            "question": "Which of the following methods is used to add an item to the end of a list?",
+            "choice": ["list.append()", "list.insert()", "list.extend()", "list.push()"],
+            "answer": "list.append()"
+          }
+    ]
+}
