@@ -24,8 +24,16 @@ boolean = True
 # print(name)
 
 # Try and except
-n = [1,3,4,5,6]
-try:
-    x = n.index(7)
-except ValueError:
-    print("Value not found!")
+# n = [1,3,4,5,6]
+# try:
+#     x = n.index(7)
+# except ValueError:
+#     print("Value not found!")
+
+# ZIP
+a = [1,2,3]
+b = ['a', 'b', 'c']
+c = ['!', '@', '#']
+
+for i,j,k in zip(a,b,c):
+    print(i,j,k)
