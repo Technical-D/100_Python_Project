@@ -31,9 +31,12 @@ boolean = True
 #     print("Value not found!")
 
 # ZIP
-a = [1,2,3]
-b = ['a', 'b', 'c']
-c = ['!', '@', '#']
+# a = [1,2,3]
+# b = ['a', 'b', 'c']
+# c = ['!', '@', '#']
 
-for i,j,k in zip(a,b,c):
-    print(i,j,k)
+# for i,j,k in zip(a,b,c):
+#     print(i,j,k)
+
+for i in range(3, 10, 2):
+    print(i)
