@@ -38,5 +38,16 @@ boolean = True
 # for i,j,k in zip(a,b,c):
 #     print(i,j,k)
 
-for i in range(3, 10, 2):
-    print(i)
+# for i in range(3, 10, 2):
+#     print(i)
+
+items = {"dhh": 12, "dhdh":13, "etey": 17}
+
+for key in items.keys():
+    print(key)
+
+for value in items.values():
+    print(value)
+
+for key, value in items.items():
+    print(key, value)
