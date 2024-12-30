@@ -41,13 +41,13 @@ boolean = True
 # for i in range(3, 10, 2):
 #     print(i)
 
-items = {"dhh": 12, "dhdh":13, "etey": 17}
+# items = {"dhh": 12, "dhdh":13, "etey": 17}
 
-for key in items.keys():
-    print(key)
+# for key in items.keys():
+#     print(key)
 
-for value in items.values():
-    print(value)
+# for value in items.values():
+#     print(value)
 
-for key, value in items.items():
-    print(key, value)
+# for key, value in items.items():
+#     print(key, value)
