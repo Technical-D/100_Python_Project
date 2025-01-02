@@ -51,3 +51,7 @@ boolean = True
 
 # for key, value in items.items():
 #     print(key, value)
+
+# Conditional Statement
+if True:
+    print("Hello    ")
