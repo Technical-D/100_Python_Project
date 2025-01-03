@@ -67,16 +67,21 @@ boolean = True
 # print(max_sum)
 
 # Finding smallest num in list
-list_1 = [1,4,5,6,71,3]
-smallest_num = None
-for num in list_1:
-    if smallest_num is None or num < smallest_num:
-        smallest_num = num
-print(smallest_num)
+# list_1 = [1,4,5,6,71,3]
+# smallest_num = None
+# for num in list_1:
+#     if smallest_num is None or num < smallest_num:
+#         smallest_num = num
+# print(smallest_num)
 
 # Finding largest num in list
-largest_num = None
-for num in list_1:
-    if largest_num is None or num > largest_num:
-        largest_num = num
-print(largest_num)
+# largest_num = None
+# for num in list_1:
+#     if largest_num is None or num > largest_num:
+#         largest_num = num
+# print(largest_num)
+
+from time import sleep
+for i in range(10, -1,-1):
+    print(i)
+    sleep(1)
