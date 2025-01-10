@@ -11,7 +11,7 @@ def db_connection():
             port=5432
         )
         cursor = connection.cursor()
-        return cursor
+        return connection, cursor
     except Exception as e:
         print(f"An error occured: {e}")
 
@@ -19,9 +19,11 @@ def db_connection():
         if connection:
             cursor.close()
             connection.close()
+    
+    return None, None
 
 def add_user():
-    cusrsor = db_connection()
+    connection, cusrsor = db_connection()
     print("Add user:")
     while True:
         username = input("Username: ")
@@ -59,6 +61,8 @@ def add_user():
     cusrsor.execute(query)
     if cusrsor.rowcount > 0:
         print("User added to system sucessfully!")
+
+    connection.commit()
 
 def main():
     print("-" * 20)
