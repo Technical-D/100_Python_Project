@@ -81,7 +81,10 @@ boolean = True
 #         largest_num = num
 # print(largest_num)
 
-from time import sleep
-for i in range(10, -1,-1):
-    print(i)
-    sleep(1)
+# from time import sleep
+# for i in range(10, -1,-1):
+#     print(i)
+#     sleep(1)
+result = []
+if not result:
+    print(1)
