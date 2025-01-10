@@ -1,14 +1,18 @@
 # User Management System
 import psycopg2
 from time import sleep
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def db_connection():
     try:
         connection = psycopg2.connect(
             host="localhost",
             database="users",
-            user="postgres",
-            password="dheeraj1902",
+            user=os.getenv("user"),
+            password=os.getenv("password"),
             port=5432
         )
         cursor = connection.cursor()
