@@ -1,5 +1,6 @@
 # User Management System
 import psycopg2
+from time import sleep
 
 def db_connection():
     try:
@@ -14,75 +15,101 @@ def db_connection():
         return connection, cursor
     except Exception as e:
         print(f"An error occured: {e}")
-
-    finally:
-        if connection:
-            cursor.close()
-            connection.close()
     
     return None, None
 
 def add_user():
-    connection, cusrsor = db_connection()
-    print("Add user:")
-    while True:
-        username = input("Username: ")
-        query = "select user_id from users where username='{username}';"
-        cusrsor.execute(query)
-        result = cusrsor.fetchall()
-        if not result:
-            print("Username is taken! Try again.")
-            continue
-        break
-
-    first_name = input("First Name: ")
-    last_name = input("Last Name: ")
-    
-    while True:
-        age = input("Age: ")
-        try:
-            age = int(age)
+    connection, cursor = db_connection()
+    if connection and cursor:
+        print("Add user:")
+        while True:
+            username = input("Username: ")
+            query = f"select user_id from users where username=%s;"
+            cursor.execute(query,(username,))
+            result = cursor.fetchall()
+            if result:
+                print("Username is taken! Try another username.")
+                continue
             break
-        except ValueError:
-            print("Please enter a valid age!")
-    
-    while True:
-        gender = input("Gender(M/F): ").lower()
-        if gender in ['male','m']:
-            gender = "Male"
-        elif gender in ['female', 'f']:
-            gender = "Female"
-        else:
-            print("Please enter a valid gender!")
-            continue
-        break
 
-    query = f"insert into users(username, first_name, last_name, age, gender) values('{username}', '{first_name}', '{last_name}', {age}, '{gender}');"
-    cusrsor.execute(query)
-    if cusrsor.rowcount > 0:
-        print("User added to system sucessfully!")
+        first_name = input("First Name: ")
+        last_name = input("Last Name: ")
+        
+        while True:
+            age = input("Age: ")
+            try:
+                age = int(age)
+                break
+            except ValueError:
+                print("Please enter a valid age!")
+        
+        while True:
+            gender = input("Gender(M/F): ").lower()
+            if gender in ['male','m']:
+                gender = "Male"
+            elif gender in ['female', 'f']:
+                gender = "Female"
+            else:
+                print("Please enter a valid gender!")
+                continue
+            break
 
-    connection.commit()
+        query = f"insert into users(username, first_name, last_name, age, gender) values(%s, %s, %s, %s, %s);"
+        cursor.execute(query, (username, first_name, last_name, age, gender))
+        if cursor.rowcount > 0:
+            print("User added to system sucessfully!")
+
+        connection.commit()
+        cursor.close()
+        connection.close()
+    else:
+        print("Sorry for inconvenience!")
+        print("Our database is not working currently. Try again after sometime.")
+
+def retrieve_user_info():
+    connection, cursor = db_connection()
+    if connection and cursor:
+        print("Fetch user information:")
+        while True:
+            username = input("Please enter the username: ")
+            query = f"select * from users where username='{username}';"
+            cursor.execute(query)
+            user_info = cursor.fetchall()
+            if user_info:
+                print("\nUser's Information:-")
+                print(f"Username: {user_info[0][1]}\nFirst Name: {user_info[0][2]}\nLast Name: {user_info[0][3]}\nAge: {user_info[0][4]}\nGender: {user_info[0][5]}")
+                sleep(2)
+            else:
+                print("User info not found! Check your username.")
+                continue
+            break
+
+        cursor.close()
+        connection.close()
+    else:
+        print("Sorry for inconvenience!")
+        print("Our database is not working currently. Try again after sometime.")
 
 def main():
-    print("-" * 20)
+    print("-" * 40)
     print("Welcome to User Management System!")
-    print("-" * 20)
+    print("-" * 40)
     while True:
         menu = """
-        Please choose an option:
-        1. Add a new user to the system
-        2. Search for a user
-        3. Exit
+Please choose an option:
+1. Add a new user to the system
+2. Fetch User Details
+3. Exit
         """
         print(menu)
         choice = int(input("Enter your choice(1-3): "))
         if choice == 1:
             add_user()
         elif choice == 2:
-            pass
+            retrieve_user_info()
         else:
             print("Sayonara!")
             break
 
-main()
+if __name__ == "__main__":
+    main()
