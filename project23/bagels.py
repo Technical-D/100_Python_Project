@@ -12,20 +12,23 @@ Here are some clues:
 When I say:    That means:
   Pico         One digit is correct but in the wrong position.
   Fermi        One digit is correct and in the right position.
-  Bagels       No digit is correct.
-""")
+  Bagels       No digit is correct.""")
     while True:
         secret_num = get_secret_num(num_digit)
-        print("I have thought up a number.")
+        print("\nI have thought up a number.")
         print(f"You have {max_guess} guesses to get it.")
 
         guess_num = 1
         while guess_num <= max_guess:
-            guess = ''
-            while len(guess) != num_digit or not guess.isdecimal():
+            while True:
                 print(f"Guess #{guess_num}")
                 guess = input(">")
-            
+                if (len(guess) == num_digit and guess.isdecimal()):
+                    break
+                else:
+                    print(f"Please enter a valid {num_digit}-digit number.")
+                    continue
+
             guess_num += 1
             if guess == secret_num:
                 print("You got it!")
@@ -38,7 +41,7 @@ When I say:    That means:
                 print("You ran out of guesses.")
                 print(f"The answer was {secret_num}.")
         
-        choice = input("Do you want to play again? y/n").lower()
+        choice = input("Do you want to play again? y/n: ").lower()
         if choice == 'y':
             continue
         elif choice == 'n':
@@ -57,7 +60,7 @@ def get_secret_num(num_digit):
 def get_clues(secret_num, guess):
     clues = []
 
-    for i in range(len(secret_num) - 1):
+    for i in range(len(guess)):
         if secret_num[i] == guess[i]:
             clues.append('Fermi')
         elif guess[i] in secret_num:
@@ -67,7 +70,7 @@ def get_clues(secret_num, guess):
         return "Bagels"
     else:
         clues.sort()
-        return ''.join(clues)
+        return ' '.join(clues)
         
 if __name__ == '__main__':
     main()
