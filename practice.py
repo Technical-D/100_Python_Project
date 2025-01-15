@@ -114,4 +114,30 @@ a = [1, 2, 'a', 'b']
 # Dictionary
 x = {"a":1, "b":2}
 y = {}
-print(type(x), type(y))
+# print(type(x), type(y))
+
+text = "haha haha haha ha hhh hahah ahhah ahahaj hajaaj ajaja jjj ajaja"
+words = text.split()
+count = {}
+for word in words:
+    # if word in count:
+    #     count[word] += 1
+    # else:
+    #     count[word] = 1
+    # Will work same sa above 4 line
+    count[word] = count.get(word, 0) + 1
+
+# print(count)
+
+# get method
+x = count.get('haha', 0)
+# print(x)
+
+max_count_key = ''
+max_count = 0
+for key, val in count.items():
+    if max_count < val:
+        max_count = val
+        max_count_key = key
+        
+print(max_count_key, max_count)
