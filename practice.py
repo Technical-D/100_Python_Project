@@ -85,6 +85,33 @@ boolean = True
 # for i in range(10, -1,-1):
 #     print(i)
 #     sleep(1)
-result = []
-if not result:
-    print(1)
+# result = []
+# if not result:
+#     print(1)
+
+email = "dheeraj90@gmail.com"
+# finding the domain of the email
+pos = email.find('@')
+domain = email[pos+1:]
+# print(domain)
+
+# file handling
+# handle = open('AnimeList.csv', 'r')
+# print(handle)
+
+# List
+a = [1, 2, 'a', 'b']
+# print(len(a))
+# for i in a:
+    # print(i)
+
+# Only worked on all int 
+# print(max(a))
+# print(min(a))
+# sum(a)
+# sorted(a)
+
+# Dictionary
+x = {"a":1, "b":2}
+y = {}
+print(type(x), type(y))
