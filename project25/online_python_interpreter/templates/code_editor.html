@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMirror Editor</title>
+
+    <!-- CodeMirror CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/theme/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/python/python.min.js"></script>
+    
+    <style>
+        /* Basic styling for the editor container */
+        #editor {
+            height: 300px;
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="editor"></div>
+
+    <script>
+        // Initialize the CodeMirror editor
+        var editor = CodeMirror(document.getElementById('editor'), {
+            lineNumbers: true,           // Show line numbers
+            mode: 'python',              // Set the language mode (Python in this case)
+            theme: 'dracula',            // Set the theme for the editor
+            indentUnit: 4,               // Set indentation level
+            smartIndent: true,           // Smart indentation
+            tabMode: 'indent',           // Tab behavior
+            matchBrackets: true,         // Highlight matching brackets
+            extraKeys: {'Ctrl-Space': 'autocomplete'} // Optional: autocomplete
+        });
+    </script>
+</body>
+</html>

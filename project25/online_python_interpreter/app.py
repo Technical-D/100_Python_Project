@@ -19,7 +19,11 @@ def run_code():
         return jsonify({'error': 'Error: Code execution timed out. Please check your code for infinite loops or inefficiencies.'})
     except Exception as e:
         return jsonify({'error': f"Error:{str(e)}"})
-    
+
+@app.route('/editor')
+def editor():
+    return render_template('code_editor.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 
