@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Python Interpreter</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Online Python Interpreter</h1>
+    <div class="container">
+        <div class="input-container">
+            <h3>Code:</h3>
+            <textarea id="code" placeholder="Write your Python code here..."></textarea><br>
+            <button onclick="runCode()">Run</button>
+        </div>
+        
+        <div class="output-container">
+            <h3>Output: </h3>
+            <div id="output"></div>
+        </div>  
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
