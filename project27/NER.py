@@ -5,7 +5,7 @@ import fitz
 import json
 load_dotenv()
 
-API_URL = "https://api-inference.huggingface.co/models/dslim/distilbert-NER"
+API_URL = "https://api-inference.huggingface.co/models/dslim/bert-base-NER"
 HEADERS = {"Authorization": f"Bearer {os.getenv('API_Key')}"}
 
 def get_ner(text):
